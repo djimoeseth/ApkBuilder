@@ -11,7 +11,7 @@ import Cocoa
 class ViewController: NSViewController {
 
     
-    @IBOutlet weak var textParentProjectDir: NSTextField!
+    @IBOutlet weak var textParentFolderLocation: NSTextField!
     
     
     @IBOutlet weak var textJsonSeedFileLocation: NSTextField!
@@ -36,7 +36,7 @@ class ViewController: NSViewController {
     
     
     @IBOutlet weak var progress: NSProgressIndicator!
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,8 @@ class ViewController: NSViewController {
     }
     
     
-    @IBAction func parentProjectDirChooser(sender: AnyObject) {
+    
+    @IBAction func parentFolderLocationChooser(sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.canChooseFiles = false
         openPanel.canChooseDirectories = true
@@ -60,7 +61,7 @@ class ViewController: NSViewController {
         openPanel.beginWithCompletionHandler({(result:Int) in
             if(result == NSFileHandlingPanelOKButton){
                 let folderURL = openPanel.URL!.path
-                self.textParentProjectDir.stringValue = folderURL!
+                self.textParentFolderLocation.stringValue = folderURL!
                 print(folderURL!)
             }
         })
@@ -135,9 +136,28 @@ class ViewController: NSViewController {
         })
     }
     
-    
     @IBAction func build(sender: AnyObject) {
+        getPermission()
         buildApk()
+    }
+    
+    func getPermission(){
+        let task:NSTask = NSTask()
+        let pipe:NSPipe = NSPipe()
+        
+        task.launchPath = "/bin/chmod"
+        
+        task.arguments = ["+x",self.textParentFolderLocation.stringValue+"/gradlew"]
+        
+        task.standardOutput = pipe
+        task.launch()
+        
+        let handle = pipe.fileHandleForReading
+        let data = handle.readDataToEndOfFile()
+        let result = NSString(data: data, encoding: NSUTF8StringEncoding)
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\(result!)"))
+        print(result!)
+        
     }
     
     func buildApk() {
@@ -149,25 +169,21 @@ class ViewController: NSViewController {
             let task:NSTask = NSTask()
             let pipe:NSPipe = NSPipe()
             
-            //        task.launchPath = "/bin/ls"
-            //        task.arguments = ["-la"]
-            task.launchPath = "/Users/amitshekhar/Desktop/dex2jar-0.0.9.15/dex2jar.sh"
-            
-            task.arguments = ["/Users/amitshekhar/Desktop/apk/bobble_apk.apk"]
+            task.launchPath = self.textParentFolderLocation.stringValue+"/gradlew"
+            task.arguments = ["--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleRelease"]
             
             task.standardOutput = pipe
             task.launch()
-            
+                        
             let handle = pipe.fileHandleForReading
             let data = handle.readDataToEndOfFile()
-            let result_s = NSString(data: data, encoding: NSUTF8StringEncoding)
-            
+            let result = NSString(data: data, encoding: NSUTF8StringEncoding)
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.progress.stopAnimation(self)
                 self.progress.hidden = true
-                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\(result_s)"))
-                print(result_s)
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\(result!)"))
+                print(result!)
             })
             
         }

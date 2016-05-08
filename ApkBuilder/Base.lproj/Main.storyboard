@@ -675,7 +675,7 @@
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4z-SD-wVb">
                                 <rect key="frame" x="10" y="755" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="Parent Directory of Project" id="9CI-XK-tS9">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="Project Parent Folder Location" id="9CI-XK-tS9">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -742,10 +742,10 @@
                                 <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5mb-am-eHG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="parentFolderLocationChooser:" target="XfG-lQ-9wD" id="z89-b5-byv"/>
+                                    </connections>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="parentProjectDirChooser:" target="XfG-lQ-9wD" id="h5z-Fr-npJ"/>
-                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V8b-Nl-itB">
                                 <rect key="frame" x="567" y="677" width="141" height="32"/>
@@ -879,11 +879,15 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="gradlewFileLocationChooser" destination="N7z-7E-CtT" id="Uc2-kL-Brf"/>
                         <outlet property="jsonSeedFileChooser" destination="V8b-Nl-itB" id="3RD-Q0-j9f"/>
+                        <outlet property="parentFolderLocationChooser" destination="y4t-CD-bBW" id="BjY-EH-pf6"/>
                         <outlet property="progress" destination="eM3-aW-SVl" id="vDa-Ef-dOT"/>
                         <outlet property="textApkVersions" destination="bxB-38-ACg" id="uf7-ok-Rxg"/>
+                        <outlet property="textGradlewFileLocation" destination="N7z-7E-CtT" id="AZv-XE-IaT"/>
                         <outlet property="textJavaSeedFileLocation" destination="Lio-r8-kXQ" id="eKK-cR-mhV"/>
                         <outlet property="textJsonSeedFileLocation" destination="6ae-ua-Jxy" id="1Ya-s8-B6Q"/>
+                        <outlet property="textParentFolderLocation" destination="N7z-7E-CtT" id="Idg-cz-nI6"/>
                         <outlet property="textParentProjectDir" destination="N7z-7E-CtT" id="K2T-F8-bhx"/>
                         <outlet property="textResHdpiFolderLocation" destination="7xt-Jd-6BW" id="xUl-aE-vnI"/>
                         <outlet property="textResXHdpiFolderLocation" destination="x2Z-Ra-pkv" id="5xj-ay-oZ8"/>
