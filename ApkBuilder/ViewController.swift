@@ -51,21 +51,88 @@ class ViewController: NSViewController {
     
     
     @IBAction func parentProjectDirChooser(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textParentProjectDir.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
     }
     
     
     @IBAction func jsonSeedFileLocationChooser(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowedFileTypes = ["json"]
+        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = false
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textJsonSeedFileLocation.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
     }
     
     
     @IBAction func javaSeedFileLocationChooser(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowedFileTypes = ["java"]
+        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = false
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textJavaSeedFileLocation.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
     }
     
 
     @IBAction func resHdpiFolderLocationChooser(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textResHdpiFolderLocation.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
     }
 
     @IBAction func resXHdpiFolderLocationChooser(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textResXHdpiFolderLocation.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
     }
     
     
