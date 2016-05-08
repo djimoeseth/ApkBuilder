@@ -743,6 +743,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="parentProjectDirChooser:" target="XfG-lQ-9wD" id="h5z-Fr-npJ"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V8b-Nl-itB">
                                 <rect key="frame" x="567" y="677" width="141" height="32"/>
@@ -750,6 +753,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="jsonSeedFileLocationChooser:" target="XfG-lQ-9wD" id="9UF-G4-iul"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Evw-eH-gdn">
                                 <rect key="frame" x="567" y="633" width="141" height="32"/>
@@ -757,6 +763,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="javaSeedFileLocationChooser:" target="XfG-lQ-9wD" id="sOU-sU-2gk"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jhV-zl-4N4">
                                 <rect key="frame" x="567" y="589" width="141" height="32"/>
@@ -764,6 +773,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="resHdpiFolderLocationChooser:" target="XfG-lQ-9wD" id="hAo-6T-hnD"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vi6-hH-yUi">
                                 <rect key="frame" x="567" y="541" width="141" height="32"/>
@@ -771,6 +783,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="resXHdpiFolderLocationChooser:" target="XfG-lQ-9wD" id="qMx-52-1KE"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-hL-yPp">
                                 <rect key="frame" x="10" y="710" width="694" height="17"/>
@@ -826,6 +841,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="build:" target="XfG-lQ-9wD" id="ivB-PA-QLi"/>
+                                </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-aW-SVl">
                                 <rect key="frame" x="349" y="321" width="16" height="16"/>
@@ -860,6 +878,18 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="jsonSeedFileChooser" destination="V8b-Nl-itB" id="3RD-Q0-j9f"/>
+                        <outlet property="progress" destination="eM3-aW-SVl" id="vDa-Ef-dOT"/>
+                        <outlet property="textApkVersions" destination="bxB-38-ACg" id="uf7-ok-Rxg"/>
+                        <outlet property="textJavaSeedFileLocation" destination="Lio-r8-kXQ" id="eKK-cR-mhV"/>
+                        <outlet property="textJsonSeedFileLocation" destination="6ae-ua-Jxy" id="1Ya-s8-B6Q"/>
+                        <outlet property="textParentProjectDir" destination="N7z-7E-CtT" id="K2T-F8-bhx"/>
+                        <outlet property="textResHdpiFolderLocation" destination="7xt-Jd-6BW" id="xUl-aE-vnI"/>
+                        <outlet property="textResXHdpiFolderLocation" destination="x2Z-Ra-pkv" id="5xj-ay-oZ8"/>
+                        <outlet property="textSeededPackIds" destination="QJW-TC-xJA" id="A3p-CU-ep7"/>
+                        <outlet property="textTerminal" destination="e8H-wh-CJT" id="oLA-iW-OXh"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
