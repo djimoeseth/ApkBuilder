@@ -143,7 +143,85 @@ class ViewController: NSViewController {
     @IBAction func build(sender: AnyObject) {
         createDirForMapping()
         getPermission()
+        deleteOldResources()
+        putNewResources()
+        doCodeChangesForSeed()
         buildApk()
+    }
+    
+    func deleteOldResources(){
+        let filemanager:NSFileManager = NSFileManager()
+
+        let pathHdpi = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-hdpi/"
+        let filesHdpi = filemanager.enumeratorAtPath(pathHdpi)
+        while let fileHdpi = filesHdpi?.nextObject() {
+            if fileHdpi.hasPrefix("seed"){
+                do{
+                    try filemanager.removeItemAtPath(pathHdpi+(fileHdpi as! String))
+                    print("File deleted")
+                }catch{
+                    print("File delete failed")
+                }
+            }
+        }
+        
+        let pathXHdpi = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-xhdpi/"
+        let filesXHdpi = filemanager.enumeratorAtPath(pathXHdpi)
+        while let fileXHdpi = filesXHdpi?.nextObject() {
+            if fileXHdpi.hasPrefix("seed"){
+                do{
+                    try filemanager.removeItemAtPath(pathXHdpi+(fileXHdpi as! String))
+                    print("File deleted")
+                }catch{
+                    print("File delete failed")
+                }
+            }
+        }
+        
+    }
+    
+    func putNewResources(){
+        let filemanager:NSFileManager = NSFileManager()
+        
+        let pathHdpiProject = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-hdpi/"
+
+        let pathHdpiProvided = self.textResHdpiFolderLocation.stringValue+"/"
+        
+        let filesHdpiProvided = filemanager.enumeratorAtPath(pathHdpiProvided)
+        
+        while let fileHdpiProvided = filesHdpiProvided?.nextObject() {
+            do{
+                try filemanager.copyItemAtPath(pathHdpiProvided+(fileHdpiProvided as! String), toPath: pathHdpiProject+(fileHdpiProvided as! String))
+                print("Copy successful")
+            }catch{
+                print("Copy failed")
+            }
+        }
+        
+        
+        let pathXHdpiProject = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-xhdpi/"
+        
+        let pathXHdpiProvided = self.textResXHdpiFolderLocation.stringValue+"/"
+        
+        let filesXHdpiProvided = filemanager.enumeratorAtPath(pathXHdpiProvided)
+        
+        while let fileXHdpiProvided = filesXHdpiProvided?.nextObject() {
+            do{
+                try filemanager.copyItemAtPath(pathXHdpiProvided+(fileXHdpiProvided as! String), toPath: pathXHdpiProject+(fileXHdpiProvided as! String))
+                print("Copy successful")
+            }catch{
+                print("Copy failed")
+            }
+        }
+        
+    }
+    
+    func doCodeChangesForSeed(){
+        
+    }
+    
+    func doCodeChangesForAPKBuild(){
+        
     }
     
     func createDirForMapping(){
