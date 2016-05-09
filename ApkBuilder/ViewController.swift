@@ -28,10 +28,10 @@ class ViewController: NSViewController {
     
     
     @IBOutlet weak var textResXHdpiFolderLocation: NSTextField!
+
     
-    
-    @IBOutlet weak var textSeededPackIds: NSTextField!
-    
+    @IBOutlet weak var textApkVersion: NSTextField!
+
     
     @IBOutlet weak var textApkVersions: NSTextField!
     
@@ -322,17 +322,19 @@ class ViewController: NSViewController {
             do{
                 try command.finish()
                 print("Build Ready")
-                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
-            }catch {
+                 dispatch_async(dispatch_get_main_queue(), {
+                    self.progress.stopAnimation(self)
+                    self.progress.hidden = true
+                    self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
+                  })
+                }catch {
                 print("Build Failed")
-                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Failed"))
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.progress.stopAnimation(self)
+                    self.progress.hidden = true
+                    self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Failed"))
+                })
             }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.progress.stopAnimation(self)
-                self.progress.hidden = true
-            })
-            
         }
         
     }

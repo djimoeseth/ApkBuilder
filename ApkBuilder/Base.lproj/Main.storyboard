@@ -723,7 +723,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-TC-xJA">
                                 <rect key="frame" x="12" y="494" width="690" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Kpz-5k-U67">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="3.8" drawsBackground="YES" id="Kpz-5k-U67">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -731,7 +731,7 @@
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxB-38-ACg">
                                 <rect key="frame" x="12" y="441" width="690" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="R4s-qm-xok">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="3802, 3803, 3804, 3805, 3806, 3807" drawsBackground="YES" id="R4s-qm-xok">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -821,7 +821,7 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="039-Lv-1b0">
                                 <rect key="frame" x="10" y="523" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="Sticker Pack Seeded IDs (comma separated values)" id="Adp-9n-Rgg">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="APK Version" id="Adp-9n-Rgg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -829,7 +829,7 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41r-NH-KvX">
                                 <rect key="frame" x="10" y="471" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="All Six Apk Versions (comma separated values)" id="XUS-SY-b3m">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="All Six Apk Versions" id="XUS-SY-b3m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -893,6 +893,7 @@
                         <outlet property="jsonSeedFileChooser" destination="V8b-Nl-itB" id="3RD-Q0-j9f"/>
                         <outlet property="parentFolderLocationChooser" destination="y4t-CD-bBW" id="BjY-EH-pf6"/>
                         <outlet property="progress" destination="eM3-aW-SVl" id="vDa-Ef-dOT"/>
+                        <outlet property="textApkVersion" destination="QJW-TC-xJA" id="T4f-Dt-OMf"/>
                         <outlet property="textApkVersions" destination="bxB-38-ACg" id="uf7-ok-Rxg"/>
                         <outlet property="textGradlewFileLocation" destination="N7z-7E-CtT" id="AZv-XE-IaT"/>
                         <outlet property="textJavaSeedFileLocation" destination="Lio-r8-kXQ" id="eKK-cR-mhV"/>
