@@ -836,8 +836,8 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-OG-Rum">
-                                <rect key="frame" x="296" y="362" width="123" height="32"/>
-                                <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
+                                <rect key="frame" x="117" y="361" width="123" height="32"/>
+                                <buttonCell key="cell" type="push" title="Build APK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -845,9 +845,6 @@
                                     <action selector="build:" target="XfG-lQ-9wD" id="ivB-PA-QLi"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-aW-SVl">
-                                <rect key="frame" x="349" y="321" width="16" height="16"/>
-                            </progressIndicator>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8H-wh-CJT">
                                 <rect key="frame" x="12" y="20" width="683" height="259"/>
                                 <clipView key="contentView" ambiguous="YES" id="OWp-4d-N60">
@@ -871,11 +868,24 @@
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="eei-p7-ou4">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="eei-p7-ou4">
                                     <rect key="frame" x="666" y="1" width="16" height="257"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-Ms-8qW">
+                                <rect key="frame" x="424" y="361" width="207" height="32"/>
+                                <buttonCell key="cell" type="push" title="Build APK WITH NEW SEED" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lhS-91-I2k">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="buildWithNewSeed:" target="XfG-lQ-9wD" id="kwy-Un-eL1"/>
+                                </connections>
+                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-aW-SVl">
+                                <rect key="frame" x="349" y="368" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>

@@ -141,21 +141,58 @@ class ViewController: NSViewController {
     }
     
     @IBAction func build(sender: AnyObject) {
-        createDirForMapping()
+        if textParentFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return
+        }
         getPermission()
-        deleteOldResources()
-        putNewResources()
-        doCodeChangesForSeed()
+        createDirForMapping()
         buildApk()
     }
     
+    
+    @IBAction func buildWithNewSeed(sender: AnyObject) {
+        if textParentFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return
+        }
+        getPermission()
+        createDirForMapping()
+        if isValid(){
+            deleteOldResources()
+            replaceSeedJSONFile()
+            replaceSeedJAVAFile()
+            addNewResources()
+            doCodeChangesForSeed()
+            buildApk()
+        }
+    }
+    
+    func isValid() -> Bool {
+        if textJsonSeedFileLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide path of JSON seed"))
+            return false
+        }else if textJavaSeedFileLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide path of JAVA seed"))
+            return false
+        }else if textResHdpiFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide path of HDPI resources"))
+            return false
+        }else if textResXHdpiFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide path of XHDPI resources"))
+            return false
+        }
+        return true
+    }
+    
     func deleteOldResources(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nDeleting Old Resources"))
         let filemanager:NSFileManager = NSFileManager()
 
         let pathHdpi = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-hdpi/"
         let filesHdpi = filemanager.enumeratorAtPath(pathHdpi)
         while let fileHdpi = filesHdpi?.nextObject() {
-            if fileHdpi.hasPrefix("seed"){
+            if fileHdpi.hasPrefix("seed_"){
                 do{
                     try filemanager.removeItemAtPath(pathHdpi+(fileHdpi as! String))
                     print("File deleted")
@@ -168,7 +205,7 @@ class ViewController: NSViewController {
         let pathXHdpi = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-xhdpi/"
         let filesXHdpi = filemanager.enumeratorAtPath(pathXHdpi)
         while let fileXHdpi = filesXHdpi?.nextObject() {
-            if fileXHdpi.hasPrefix("seed"){
+            if fileXHdpi.hasPrefix("seed_"){
                 do{
                     try filemanager.removeItemAtPath(pathXHdpi+(fileXHdpi as! String))
                     print("File deleted")
@@ -177,10 +214,11 @@ class ViewController: NSViewController {
                 }
             }
         }
-        
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nOld Resources Deletion done"))
     }
     
-    func putNewResources(){
+    func addNewResources(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nAdding New Resources"))
         let filemanager:NSFileManager = NSFileManager()
         
         let pathHdpiProject = self.textParentFolderLocation.stringValue+"/app/src/main/res/drawable-hdpi/"
@@ -213,6 +251,14 @@ class ViewController: NSViewController {
                 print("Copy failed")
             }
         }
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nNew Resources Addition done"))
+    }
+    
+    func replaceSeedJSONFile(){
+        
+    }
+    
+    func replaceSeedJAVAFile(){
         
     }
     
@@ -226,8 +272,11 @@ class ViewController: NSViewController {
     
     func createDirForMapping(){
         do {
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nCreating Mapping Directory"))
             try NSFileManager.defaultManager().createDirectoryAtPath(self.textParentFolderLocation.stringValue+"/app/build/outputs/mapping/release", withIntermediateDirectories: true, attributes: nil)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nMapping Directory Created"))
         } catch let error as NSError {
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nMapping Directory Creation Failed"))
             print(error.localizedDescription);
         }
     }
