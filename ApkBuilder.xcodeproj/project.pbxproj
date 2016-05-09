@@ -11,7 +11,47 @@
 		158749A71CDF83EE000BD087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158749A61CDF83EE000BD087 /* ViewController.swift */; };
 		158749A91CDF83EE000BD087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158749A81CDF83EE000BD087 /* Assets.xcassets */; };
 		158749AC1CDF83EE000BD087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158749AA1CDF83EE000BD087 /* Main.storyboard */; };
+		15E2D99B1CE058DE005003F0 /* SwiftShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D9981CE058AF005003F0 /* SwiftShell.framework */; };
+		15E2D99C1CE058DE005003F0 /* SwiftShell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D9981CE058AF005003F0 /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15E2D9971CE058AF005003F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BA2E3B151B5C34DD001ED175;
+			remoteInfo = SwiftShell;
+		};
+		15E2D9991CE058AF005003F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BA2E3B1F1B5C34DD001ED175;
+			remoteInfo = SwiftShellTests;
+		};
+		15E2D99D1CE058DE005003F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BA2E3B141B5C34DD001ED175;
+			remoteInfo = SwiftShell;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		15E2D99F1CE058DE005003F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				15E2D99C1CE058DE005003F0 /* SwiftShell.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		158749A11CDF83EE000BD087 /* ApkBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApkBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +60,7 @@
 		158749A81CDF83EE000BD087 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		158749AB1CDF83EE000BD087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		158749AD1CDF83EE000BD087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftShell2.xcodeproj; path = "../../../../../Downloads/SwiftShell-master/SwiftShell2.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E2D99B1CE058DE005003F0 /* SwiftShell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +94,7 @@
 		158749A31CDF83EE000BD087 /* ApkBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */,
 				158749A41CDF83EE000BD087 /* AppDelegate.swift */,
 				158749A61CDF83EE000BD087 /* ViewController.swift */,
 				158749A81CDF83EE000BD087 /* Assets.xcassets */,
@@ -59,6 +102,15 @@
 				158749AD1CDF83EE000BD087 /* Info.plist */,
 			);
 			path = ApkBuilder;
+			sourceTree = "<group>";
+		};
+		15E2D9931CE058AF005003F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15E2D9981CE058AF005003F0 /* SwiftShell.framework */,
+				15E2D99A1CE058AF005003F0 /* SwiftShellTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,10 +123,12 @@
 				1587499D1CDF83EE000BD087 /* Sources */,
 				1587499E1CDF83EE000BD087 /* Frameworks */,
 				1587499F1CDF83EE000BD087 /* Resources */,
+				15E2D99F1CE058DE005003F0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				15E2D99E1CE058DE005003F0 /* PBXTargetDependency */,
 			);
 			name = ApkBuilder;
 			productName = ApkBuilder;
@@ -107,12 +161,35 @@
 			mainGroup = 158749981CDF83ED000BD087;
 			productRefGroup = 158749A21CDF83EE000BD087 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 15E2D9931CE058AF005003F0 /* Products */;
+					ProjectRef = 15E2D9921CE058AF005003F0 /* SwiftShell2.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				158749A01CDF83EE000BD087 /* ApkBuilder */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		15E2D9981CE058AF005003F0 /* SwiftShell.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftShell.framework;
+			remoteRef = 15E2D9971CE058AF005003F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		15E2D99A1CE058AF005003F0 /* SwiftShellTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftShellTests.xctest;
+			remoteRef = 15E2D9991CE058AF005003F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1587499F1CDF83EE000BD087 /* Resources */ = {
@@ -137,6 +214,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		15E2D99E1CE058DE005003F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftShell;
+			targetProxy = 15E2D99D1CE058DE005003F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		158749AA1CDF83EE000BD087 /* Main.storyboard */ = {
@@ -237,6 +322,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
@@ -249,6 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
@@ -275,6 +362,7 @@
 				158749B21CDF83EE000BD087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

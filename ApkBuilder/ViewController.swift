@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import SwiftShell
+
 class ViewController: NSViewController {
 
     
@@ -142,51 +144,39 @@ class ViewController: NSViewController {
     }
     
     func getPermission(){
-        let task:NSTask = NSTask()
-        let pipe:NSPipe = NSPipe()
         
-        task.launchPath = "/bin/chmod"
+        run("chmod","+x",self.textParentFolderLocation.stringValue+"/gradlew")
         
-        task.arguments = ["+x",self.textParentFolderLocation.stringValue+"/gradlew"]
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPermission Granted"))
         
-        task.standardOutput = pipe
-        task.launch()
-        
-        let handle = pipe.fileHandleForReading
-        let data = handle.readDataToEndOfFile()
-        let result = NSString(data: data, encoding: NSUTF8StringEncoding)
-        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\(result!)"))
-        print(result!)
         
     }
     
     func buildApk() {
         self.progress.hidden = false
         self.progress.startAnimation(self)
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Started"))
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(taskQueue) {
+
+            let command = runAsync(self.textParentFolderLocation.stringValue+"/gradlew","--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleRelease")
             
-            let task:NSTask = NSTask()
-            let pipe:NSPipe = NSPipe()
-            
-            task.launchPath = self.textParentFolderLocation.stringValue+"/gradlew"
-            task.arguments = ["--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleRelease"]
-            
-            task.standardOutput = pipe
-            task.launch()
-                        
-            let handle = pipe.fileHandleForReading
-            let data = handle.readDataToEndOfFile()
-            let result = NSString(data: data, encoding: NSUTF8StringEncoding)
+            do{
+                try command.finish()
+                print("Build Ready")
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
+            }catch {
+                print("Build Failed")
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Failed"))
+            }
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.progress.stopAnimation(self)
                 self.progress.hidden = true
-                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\(result!)"))
-                print(result!)
             })
             
         }
+        
     }
     
 }

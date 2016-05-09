@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "73DFAF436ED46042C361147F8515ECE7EE26110B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "73DFAF436ED46042C361147F8515ECE7EE26110B" : 0,
+    "BF7C67668F4701C0AE5156F0E6F0CA70C1C6C61F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BBAC1A0D-440D-4355-8BFE-5B657B32CB04",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "73DFAF436ED46042C361147F8515ECE7EE26110B" : "ApkBuilder\/",
+    "BF7C67668F4701C0AE5156F0E6F0CA70C1C6C61F" : "..\/..\/..\/Desktop\/otherFiles\/SwiftShell"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ApkBuilder",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ApkBuilder.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/amitshekhariitbhu\/ApkBuilder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "73DFAF436ED46042C361147F8515ECE7EE26110B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kareman\/SwiftShell.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BF7C67668F4701C0AE5156F0E6F0CA70C1C6C61F"
+    }
+  ]
+}
