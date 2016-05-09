@@ -29,6 +29,7 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var textResXHdpiFolderLocation: NSTextField!
 
+    @IBOutlet weak var textApkFolderLocation: NSTextField!
     
     @IBOutlet weak var textApkVersion: NSTextField!
 
@@ -140,9 +141,39 @@ class ViewController: NSViewController {
         })
     }
     
+    
+    @IBAction func apkFolderLocationChooserLocation(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.resolvesAliases = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "Choose"
+        openPanel.beginWithCompletionHandler({(result:Int) in
+            if(result == NSFileHandlingPanelOKButton){
+                let folderURL = openPanel.URL!.path
+                self.textApkFolderLocation.stringValue = folderURL!
+                print(folderURL!)
+            }
+        })
+    }
+    
+    
+    @IBAction func openApkFolder(sender: AnyObject) {
+        if !textApkFolderLocation.stringValue.isEmpty{
+            run("open",self.textApkFolderLocation.stringValue)
+        }else{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nApk folder location not provided"))
+        }
+    }
+    
     @IBAction func build(sender: AnyObject) {
         if textParentFolderLocation.stringValue.isEmpty{
             self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return
+        }
+        if textApkFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk folder location"))
             return
         }
         getPermission()
@@ -154,6 +185,10 @@ class ViewController: NSViewController {
     @IBAction func buildWithNewSeed(sender: AnyObject) {
         if textParentFolderLocation.stringValue.isEmpty{
             self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return
+        }
+        if textApkFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk folder location"))
             return
         }
         getPermission()
@@ -330,15 +365,17 @@ class ViewController: NSViewController {
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(taskQueue) {
 
-            let command = runAsync(self.textParentFolderLocation.stringValue+"/gradlew","--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleRelease")
+            let command = runAsync(self.textParentFolderLocation.stringValue+"/gradlew","--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleArmRelease","assembleNonarmRelease")
             
             do{
                 try command.finish()
-                print("Build Ready")
+                self.moveApkToRequiedFolder()
                  dispatch_async(dispatch_get_main_queue(), {
                     self.progress.stopAnimation(self)
                     self.progress.hidden = true
                     self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
+                    print("Build Ready")
+
                   })
                 }catch {
                 print("Build Failed")
@@ -350,6 +387,48 @@ class ViewController: NSViewController {
             }
         }
         
+    }
+    
+    func moveApkToRequiedFolder(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nMoving Apk to required folder"))
+        let filemanager:NSFileManager = NSFileManager()
+        
+        let apkArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-arm-release.apk"
+        
+        let apkNonArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-nonarm-release.apk"
+        
+        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/3808.apk"
+        
+        let apkNonArmRequiredPath = self.textApkFolderLocation.stringValue+"/3809.apk"
+        
+        
+        do{
+            try filemanager.removeItemAtPath(apkArmRequiredPath)
+            print("File deleted")
+        }catch{
+            print("File delete failed")
+        }
+        
+        do{
+            try filemanager.removeItemAtPath(apkNonArmRequiredPath)
+            print("File deleted")
+        }catch{
+            print("File delete failed")
+        }
+        
+        do{
+            try filemanager.moveItemAtPath(apkArmBuildPath, toPath: apkArmRequiredPath)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nArm Apk moved successfully"))
+        }catch{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nArm Apk move failed"))
+        }
+        
+        do{
+            try filemanager.moveItemAtPath(apkNonArmBuildPath, toPath: apkNonArmRequiredPath)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nNonArm Apk moved successfully"))
+        }catch{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nNonArm Apk move failed"))
+        }
     }
     
 }

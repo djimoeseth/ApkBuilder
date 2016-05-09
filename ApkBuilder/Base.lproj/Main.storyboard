@@ -721,8 +721,16 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Qk-xX-6zF">
+                                <rect key="frame" x="12" y="503" width="553" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="892-Pp-iv0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-TC-xJA">
-                                <rect key="frame" x="12" y="494" width="690" height="22"/>
+                                <rect key="frame" x="12" y="457" width="690" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="3.8" drawsBackground="YES" id="Kpz-5k-U67">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -730,7 +738,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxB-38-ACg">
-                                <rect key="frame" x="12" y="441" width="690" height="22"/>
+                                <rect key="frame" x="12" y="408" width="690" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="3802, 3803, 3804, 3805, 3806, 3807" drawsBackground="YES" id="R4s-qm-xok">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -787,6 +795,16 @@
                                     <action selector="resXHdpiFolderLocationChooser:" target="XfG-lQ-9wD" id="qMx-52-1KE"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeW-MG-sda">
+                                <rect key="frame" x="567" y="497" width="141" height="32"/>
+                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dvq-6p-ppm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="apkFolderLocationChooserLocation:" target="XfG-lQ-9wD" id="AAn-UX-lYJ"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-hL-yPp">
                                 <rect key="frame" x="10" y="710" width="694" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="JSON Seed File Location" id="b1I-lt-Hl7">
@@ -819,30 +837,48 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5C-G1-yuD">
+                                <rect key="frame" x="10" y="527" width="694" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="APK Folder Location" id="Z2p-A4-77g">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="039-Lv-1b0">
-                                <rect key="frame" x="10" y="523" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="APK Version" id="Adp-9n-Rgg">
+                                <rect key="frame" x="10" y="483" width="694" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="APK Version Name" id="Adp-9n-Rgg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41r-NH-KvX">
-                                <rect key="frame" x="10" y="471" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="All Six Apk Versions" id="XUS-SY-b3m">
+                                <rect key="frame" x="10" y="437" width="694" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="All Six Apk Versions Code" id="XUS-SY-b3m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-OG-Rum">
-                                <rect key="frame" x="117" y="361" width="123" height="32"/>
+                                <rect key="frame" x="117" y="347" width="123" height="32"/>
                                 <buttonCell key="cell" type="push" title="Build APK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="build:" target="XfG-lQ-9wD" id="ivB-PA-QLi"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQY-o2-eb7">
+                                <rect key="frame" x="286" y="299" width="142" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open Apk Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CXz-Hm-MZH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openApkFolder:" target="XfG-lQ-9wD" id="Dxp-HL-l0Y"/>
                                 </connections>
                             </button>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8H-wh-CJT">
@@ -874,7 +910,7 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-Ms-8qW">
-                                <rect key="frame" x="424" y="361" width="207" height="32"/>
+                                <rect key="frame" x="424" y="347" width="207" height="32"/>
                                 <buttonCell key="cell" type="push" title="Build APK WITH NEW SEED" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lhS-91-I2k">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -884,7 +920,7 @@
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-aW-SVl">
-                                <rect key="frame" x="349" y="368" width="16" height="16"/>
+                                <rect key="frame" x="349" y="356" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                     </view>
@@ -893,6 +929,7 @@
                         <outlet property="jsonSeedFileChooser" destination="V8b-Nl-itB" id="3RD-Q0-j9f"/>
                         <outlet property="parentFolderLocationChooser" destination="y4t-CD-bBW" id="BjY-EH-pf6"/>
                         <outlet property="progress" destination="eM3-aW-SVl" id="vDa-Ef-dOT"/>
+                        <outlet property="textApkFolderLocation" destination="0Qk-xX-6zF" id="AOq-ad-ccE"/>
                         <outlet property="textApkVersion" destination="QJW-TC-xJA" id="T4f-Dt-OMf"/>
                         <outlet property="textApkVersions" destination="bxB-38-ACg" id="uf7-ok-Rxg"/>
                         <outlet property="textGradlewFileLocation" destination="N7z-7E-CtT" id="AZv-XE-IaT"/>
