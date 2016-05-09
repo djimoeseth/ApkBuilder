@@ -147,9 +147,7 @@ class ViewController: NSViewController {
         }
         getPermission()
         createDirForMapping()
-//        buildApk()
-        replaceSeedJSONFile()
-        replaceSeedJAVAFile()
+        buildApk()
     }
     
     
