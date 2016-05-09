@@ -442,15 +442,173 @@ class ViewController: NSViewController {
     
     func doCodeChangesForAPKBuild(){
         switch turn {
-        case 1: break
-            //doSomething
-        case 2: break
-            //doSomething
-        case 3: break
-            //doSomething
-        default : break
-            //doSomething
+        case 1:
+            updateCodeForTurnOne()
+        case 2:
+            updateCodeForTurnTwo()
+        case 3:
+            updateCodeForTurnThree()
+        default:
+            updateCodeForTurnTwo()
         }
+    }
+    
+    func updateCodeForTurnOne(){
+        
+       let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
+        
+       do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let product_flvour_seperator =  "//PRODUCT_FLAVOUR_COMPONENT"
+            let gradleParts = data.componentsSeparatedByString(product_flvour_seperator)
+            let armVersionCode = self.textApkVersionCodeOne.stringValue
+            let nonArmVersionCode = self.textApkVersionCodeTwo.stringValue
+            let resConfig = "xhdpi"
+            let abiFilter = "armeabi"
+            let versionName = self.textApkVersionName.stringValue
+            print(gradleParts[1])
+            
+            let gradlePart_0 = gradleParts[0]
+            let version_name_seperator = "//VERSION_NAME_COMPONENT"
+            var gradleParts_0_parts = gradlePart_0.componentsSeparatedByString(version_name_seperator)
+            
+            let productFalour = getProductFalour(armVersionCode,nonArmVersionCode: nonArmVersionCode, resConfig: resConfig, abiFilter: abiFilter)
+            
+            let dataToBeWritten = gradleParts_0_parts[0] + "\n\t\t" + version_name_seperator +  "\n" + "\t\tversionName \""+versionName+"\"" + "\n\t\t"  + version_name_seperator + gradleParts_0_parts[2] + "\n\t" + product_flvour_seperator + "\n"  + productFalour + "\n\t" + product_flvour_seperator + "\n"  + gradleParts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+
+    }
+    
+    func updateCodeForTurnTwo(){
+        let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let product_flvour_seperator =  "//PRODUCT_FLAVOUR_COMPONENT"
+            let gradleParts = data.componentsSeparatedByString(product_flvour_seperator)
+            let armVersionCode = self.textApkVersionCodeThree.stringValue
+            let nonArmVersionCode = self.textApkVersionCodeFour.stringValue
+            let resConfig = "xhdpi"
+            let abiFilter = "armeabi-v7a"
+            let versionName = self.textApkVersionName.stringValue
+            print(gradleParts[1])
+            
+            let gradlePart_0 = gradleParts[0]
+            let version_name_seperator = "//VERSION_NAME_COMPONENT"
+            var gradleParts_0_parts = gradlePart_0.componentsSeparatedByString(version_name_seperator)
+            
+            let productFalour = getProductFalour(armVersionCode,nonArmVersionCode: nonArmVersionCode, resConfig: resConfig, abiFilter: abiFilter)
+            
+            let dataToBeWritten = gradleParts_0_parts[0] + "\n\t\t" + version_name_seperator +  "\n" + "\t\tversionName \""+versionName+"\"" + "\n\t\t"  + version_name_seperator + gradleParts_0_parts[2] + "\n\t" + product_flvour_seperator + "\n"  + productFalour + "\n\t" + product_flvour_seperator + "\n"  + gradleParts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+        
+    }
+    
+    func updateCodeForTurnThree(){
+        let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let product_flvour_seperator =  "//PRODUCT_FLAVOUR_COMPONENT"
+            let gradleParts = data.componentsSeparatedByString(product_flvour_seperator)
+            let armVersionCode = self.textApkVersionCodeFive.stringValue
+            let nonArmVersionCode = self.textApkVersionCodeSix.stringValue
+            let resConfig = "hdpi"
+            let abiFilter = "armeabi-v7a"
+            let versionName = self.textApkVersionName.stringValue
+            print(gradleParts[1])
+            
+            let gradlePart_0 = gradleParts[0]
+            let version_name_seperator = "//VERSION_NAME_COMPONENT"
+            var gradleParts_0_parts = gradlePart_0.componentsSeparatedByString(version_name_seperator)
+            
+            let productFalour = getProductFalour(armVersionCode,nonArmVersionCode: nonArmVersionCode, resConfig: resConfig, abiFilter: abiFilter)
+            
+            let dataToBeWritten = gradleParts_0_parts[0] + "\n\t\t" + version_name_seperator +  "\n" + "\t\tversionName \""+versionName+"\"" + "\n\t\t"  + version_name_seperator + gradleParts_0_parts[2] + "\n\t" + product_flvour_seperator + "\n"  + productFalour + "\n\t" + product_flvour_seperator + "\n"  + gradleParts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+        
+    }
+    
+    func updateCodeForSingleApk(){
+        let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let product_flvour_seperator =  "//PRODUCT_FLAVOUR_COMPONENT"
+            let gradleParts = data.componentsSeparatedByString(product_flvour_seperator)
+            let armVersionCode = self.textApkVersionCodeOne.stringValue
+            let nonArmVersionCode: String? = String(Int(self.textApkVersionCodeOne.stringValue)!+1)
+            let resConfig = "xhdpi"
+            let abiFilter = "armeabi-v7a"
+            let versionName = self.textApkVersionName.stringValue
+            print(gradleParts[1])
+            
+            let gradlePart_0 = gradleParts[0]
+            let version_name_seperator = "//VERSION_NAME_COMPONENT"
+            var gradleParts_0_parts = gradlePart_0.componentsSeparatedByString(version_name_seperator)
+            
+            let productFalour = getProductFalour(armVersionCode,nonArmVersionCode: nonArmVersionCode!, resConfig: resConfig, abiFilter: abiFilter)
+            
+            let dataToBeWritten = gradleParts_0_parts[0] + "\n\t\t" + version_name_seperator +  "\n" + "\t\tversionName \""+versionName+"\"" + "\n\t\t"  + version_name_seperator + gradleParts_0_parts[2] + "\n\t" + product_flvour_seperator + "\n"  + productFalour + "\n\t" + product_flvour_seperator + "\n"  + gradleParts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+        
+    }
+    
+    func getProductFalour(armVersionCode:String,nonArmVersionCode:String,resConfig:String,abiFilter:String) -> String{
+        
+        let filePath = NSBundle.mainBundle().pathForResource("template_product_flavors", ofType: "txt")
+        
+        let contentData = NSFileManager.defaultManager().contentsAtPath(filePath!)
+        
+        var result = ""
+        
+        result = (NSString(data: contentData!, encoding: NSUTF8StringEncoding) as? String)!
+        
+        result = (result as NSString).stringByReplacingOccurrencesOfString("__NON_ARM_RES_CONFIG__", withString: resConfig)
+        result = (result as NSString).stringByReplacingOccurrencesOfString("__ARM_RES_CONFIG__", withString: resConfig)
+        result = (result as NSString).stringByReplacingOccurrencesOfString("__NON_ARM_VERSION_CODE__", withString: nonArmVersionCode)
+        result = (result as NSString).stringByReplacingOccurrencesOfString("__ARM_VERSION_CODE__", withString: armVersionCode)
+        result = (result as NSString).stringByReplacingOccurrencesOfString("__ABI_FILTER__", withString: abiFilter)
+        
+        print(result)
+        
+        return result
     }
     
     func createDirForMapping(){
@@ -570,6 +728,7 @@ class ViewController: NSViewController {
     func buildSingleApk(){
         self.progress.hidden = false
         self.progress.startAnimation(self)
+        updateCodeForSingleApk()
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Started"))
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(taskQueue) {

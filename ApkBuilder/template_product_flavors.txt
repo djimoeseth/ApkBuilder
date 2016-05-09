@@ -1,0 +1,18 @@
+	productFlavors {
+		nonarm {
+			ndk {
+				abiFilter "x86"
+				abiFilter "mips"
+			}
+			resConfigs "__NON_ARM_RES_CONFIG__", "nodpi"
+			versionCode __NON_ARM_VERSION_CODE__
+		}
+		arm {
+			ndk {
+				abiFilter "__ABI_FILTER__"
+			}
+			resConfigs "__ARM_RES_CONFIG__", "nodpi"
+			versionCode __ARM_VERSION_CODE__
+		}
+		fat
+	}
