@@ -163,7 +163,6 @@ class ViewController: NSViewController {
             replaceSeedJSONFile()
             replaceSeedJAVAFile()
             addNewResources()
-            doCodeChangesForSeed()
             buildApk()
         }
     }
@@ -255,15 +254,37 @@ class ViewController: NSViewController {
     }
     
     func replaceSeedJSONFile(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nReplacing Seed JSON File"))
+        let filemanager:NSFileManager = NSFileManager()
         
+        let seedJSONFilePathProject = self.textParentFolderLocation.stringValue+"/app/src/main/res/raw/seed.json"
+        
+        let seedJSONFilePathProvided = self.textJavaSeedFileLocation.stringValue
+        
+        do{
+            try filemanager.copyItemAtPath(seedJSONFilePathProvided, toPath: seedJSONFilePathProject)
+            print("Copy successful")
+        }catch{
+            print("Copy failed")
+        }
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JSON File Replaced"))
     }
     
     func replaceSeedJAVAFile(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nReplacing Seed JAVA File"))
+        let filemanager:NSFileManager = NSFileManager()
         
-    }
-    
-    func doCodeChangesForSeed(){
+        let seedJavaFilePathProject = self.textParentFolderLocation.stringValue+"/app/src/main/java/com/touchtalent/bobbleapp/seed/Seed.java"
+
+        let seedJavaFilePathProvided = self.textJavaSeedFileLocation.stringValue
         
+        do{
+            try filemanager.copyItemAtPath(seedJavaFilePathProvided, toPath: seedJavaFilePathProject)
+            print("Copy successful")
+        }catch{
+            print("Copy failed")
+        }
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JAVA File Replaced"))
     }
     
     func doCodeChangesForAPKBuild(){
