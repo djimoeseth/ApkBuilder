@@ -737,14 +737,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxB-38-ACg">
-                                <rect key="frame" x="12" y="408" width="690" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="3802, 3803, 3804, 3805, 3806, 3807" drawsBackground="YES" id="R4s-qm-xok">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4t-CD-bBW">
                                 <rect key="frame" x="567" y="725" width="141" height="32"/>
                                 <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5mb-am-eHG">
@@ -853,17 +845,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41r-NH-KvX">
-                                <rect key="frame" x="10" y="437" width="694" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="All Six Apk Versions Code" id="XUS-SY-b3m">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTD-aZ-m0l">
+                                <rect key="frame" x="10" y="400" width="694" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" title="APK Version Code" id="vvc-t5-yJP">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-OG-Rum">
-                                <rect key="frame" x="117" y="347" width="123" height="32"/>
-                                <buttonCell key="cell" type="push" title="Build APK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
+                                <rect key="frame" x="6" y="299" width="123" height="32"/>
+                                <buttonCell key="cell" type="push" title="Build Apk" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -872,7 +864,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQY-o2-eb7">
-                                <rect key="frame" x="286" y="299" width="142" height="32"/>
+                                <rect key="frame" x="559" y="299" width="142" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open Apk Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CXz-Hm-MZH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -910,8 +902,8 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-Ms-8qW">
-                                <rect key="frame" x="424" y="347" width="207" height="32"/>
-                                <buttonCell key="cell" type="push" title="Build APK WITH NEW SEED" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lhS-91-I2k">
+                                <rect key="frame" x="136" y="299" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Build Apk With New Seed" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lhS-91-I2k">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -919,9 +911,77 @@
                                     <action selector="buildWithNewSeed:" target="XfG-lQ-9wD" id="kwy-Un-eL1"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-zL-LUs">
+                                <rect key="frame" x="11" y="422" width="122" height="18"/>
+                                <buttonCell key="cell" type="radio" title="I need all six apk" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rdp-R7-39m">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="allApkButton:" target="XfG-lQ-9wD" id="cwj-N7-LAF"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LMJ-g6-rYL">
+                                <rect key="frame" x="166" y="422" width="140" height="18"/>
+                                <buttonCell key="cell" type="radio" title="I need only one apk" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="QgE-z4-Ew5">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="oneApkButton:" target="XfG-lQ-9wD" id="a59-oN-PRs"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-aW-SVl">
-                                <rect key="frame" x="349" y="356" width="16" height="16"/>
+                                <rect key="frame" x="541" y="308" width="16" height="16"/>
                             </progressIndicator>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggU-iN-oB9">
+                                <rect key="frame" x="12" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="acL-SS-Gyw">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyg-6f-alQ">
+                                <rect key="frame" x="116" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="6w0-Ha-pTw">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN8-WD-EAX">
+                                <rect key="frame" x="220" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="l1H-Wy-YrE">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eyn-gA-3aO">
+                                <rect key="frame" x="324" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Z1x-9f-cJR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AIB-ee-S8o">
+                                <rect key="frame" x="427" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x6b-QA-qtm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="toh-bw-gH3">
+                                <rect key="frame" x="531" y="370" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="fDm-Ro-FVb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -929,9 +989,17 @@
                         <outlet property="jsonSeedFileChooser" destination="V8b-Nl-itB" id="3RD-Q0-j9f"/>
                         <outlet property="parentFolderLocationChooser" destination="y4t-CD-bBW" id="BjY-EH-pf6"/>
                         <outlet property="progress" destination="eM3-aW-SVl" id="vDa-Ef-dOT"/>
+                        <outlet property="radioButtonAllApk" destination="Ni0-zL-LUs" id="dxj-Op-TQQ"/>
+                        <outlet property="radioButtonOneApk" destination="LMJ-g6-rYL" id="Jqh-9c-rV4"/>
                         <outlet property="textApkFolderLocation" destination="0Qk-xX-6zF" id="AOq-ad-ccE"/>
                         <outlet property="textApkVersion" destination="QJW-TC-xJA" id="T4f-Dt-OMf"/>
-                        <outlet property="textApkVersions" destination="bxB-38-ACg" id="uf7-ok-Rxg"/>
+                        <outlet property="textApkVersionCodeFive" destination="AIB-ee-S8o" id="5cl-vX-nkJ"/>
+                        <outlet property="textApkVersionCodeFour" destination="Eyn-gA-3aO" id="ngY-Rx-HDB"/>
+                        <outlet property="textApkVersionCodeOne" destination="ggU-iN-oB9" id="GgG-kx-x7i"/>
+                        <outlet property="textApkVersionCodeSix" destination="toh-bw-gH3" id="dJY-JZ-eKF"/>
+                        <outlet property="textApkVersionCodeThree" destination="gN8-WD-EAX" id="wMw-gW-omy"/>
+                        <outlet property="textApkVersionCodeTwo" destination="cyg-6f-alQ" id="dL7-Pf-6ik"/>
+                        <outlet property="textApkVersionName" destination="QJW-TC-xJA" id="Kfh-kn-kkf"/>
                         <outlet property="textGradlewFileLocation" destination="N7z-7E-CtT" id="AZv-XE-IaT"/>
                         <outlet property="textJavaSeedFileLocation" destination="Lio-r8-kXQ" id="eKK-cR-mhV"/>
                         <outlet property="textJsonSeedFileLocation" destination="6ae-ua-Jxy" id="1Ya-s8-B6Q"/>

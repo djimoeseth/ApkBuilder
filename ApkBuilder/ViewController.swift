@@ -29,12 +29,8 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var textResXHdpiFolderLocation: NSTextField!
 
+    
     @IBOutlet weak var textApkFolderLocation: NSTextField!
-    
-    @IBOutlet weak var textApkVersion: NSTextField!
-
-    
-    @IBOutlet weak var textApkVersions: NSTextField!
     
     
     @IBOutlet weak var textTerminal: NSScrollView!
@@ -43,9 +39,38 @@ class ViewController: NSViewController {
     @IBOutlet weak var progress: NSProgressIndicator!
    
     
+    @IBOutlet weak var textApkVersionName: NSTextField!
+    
+    @IBOutlet weak var radioButtonAllApk: NSButton!
+    
+    
+    @IBOutlet weak var radioButtonOneApk: NSButton!
+    
+    
+    @IBOutlet weak var textApkVersionCodeOne: NSTextField!
+    
+    
+    @IBOutlet weak var textApkVersionCodeTwo: NSTextField!
+    
+    
+    @IBOutlet weak var textApkVersionCodeThree: NSTextField!
+    
+    
+    @IBOutlet weak var textApkVersionCodeFour: NSTextField!
+    
+    
+    @IBOutlet weak var textApkVersionCodeFive: NSTextField!
+    
+    
+    @IBOutlet weak var textApkVersionCodeSix: NSTextField!
+    
+    
+    var isAllApkRequired = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.progress.hidden = true
+        radioButtonAllApk.state = 1
     }
 
     override var representedObject: AnyObject? {
@@ -167,42 +192,114 @@ class ViewController: NSViewController {
         }
     }
     
+    
+    @IBAction func allApkButton(sender: AnyObject) {
+        isAllApkRequired = true
+        radioButtonAllApk.state = 1
+        radioButtonOneApk.state = 0
+        textApkVersionCodeOne.hidden = false
+        textApkVersionCodeTwo.hidden = false
+        textApkVersionCodeThree.hidden = false
+        textApkVersionCodeFour.hidden = false
+        textApkVersionCodeFive.hidden = false
+        textApkVersionCodeSix.hidden = false
+    }
+    
+    
+    @IBAction func oneApkButton(sender: AnyObject) {
+        isAllApkRequired = false
+        radioButtonAllApk.state = 0
+        radioButtonOneApk.state = 1
+        textApkVersionCodeOne.hidden = false
+        textApkVersionCodeTwo.hidden = true
+        textApkVersionCodeThree.hidden = true
+        textApkVersionCodeFour.hidden = true
+        textApkVersionCodeFive.hidden = true
+        textApkVersionCodeSix.hidden = true
+    }
+    
+    
     @IBAction func build(sender: AnyObject) {
-        if textParentFolderLocation.stringValue.isEmpty{
-            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
-            return
-        }
-        if textApkFolderLocation.stringValue.isEmpty{
-            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk folder location"))
+        if !isInitialCheckPass(){
             return
         }
         getPermission()
         createDirForMapping()
-        buildApk()
+        if isAllApkRequired{
+            buildApk()
+        }else{
+            buildSingleApk()
+        }
     }
     
     
     @IBAction func buildWithNewSeed(sender: AnyObject) {
-        if textParentFolderLocation.stringValue.isEmpty{
-            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
-            return
-        }
-        if textApkFolderLocation.stringValue.isEmpty{
-            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk folder location"))
+        if !isInitialCheckPass(){
             return
         }
         getPermission()
         createDirForMapping()
-        if isValid(){
+        if isValidForNewSeed(){
             deleteOldResources()
             replaceSeedJSONFile()
             replaceSeedJAVAFile()
             addNewResources()
-            buildApk()
+            if isAllApkRequired{
+                buildApk()
+            }else{
+                buildSingleApk()
+            }
         }
     }
     
-    func isValid() -> Bool {
+    func isInitialCheckPass() -> Bool {
+        if textParentFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return false
+        }
+        if textApkFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk folder location"))
+            return false
+        }
+        if textApkVersionName.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk version name"))
+            return false
+        }
+        if isAllApkRequired{
+            if textApkVersionCodeOne.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide first apk version code"))
+                return false
+            }
+            if textApkVersionCodeTwo.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide second apk version code"))
+                return false
+            }
+            if textApkVersionCodeThree.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide third apk version code"))
+                return false
+            }
+            if textApkVersionCodeFour.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide fourth apk version code"))
+                return false
+            }
+            if textApkVersionCodeFive.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide fifth apk version code"))
+                return false
+            }
+            if textApkVersionCodeSix.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide sixth apk version code"))
+                return false
+            }
+        }else{
+            if textApkVersionCodeOne.stringValue.isEmpty{
+                self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide apk version code"))
+                return false
+            }
+        }
+        return true
+    }
+    
+    func isValidForNewSeed() -> Bool {
         if textJsonSeedFileLocation.stringValue.isEmpty{
             self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide path of JSON seed"))
             return false
@@ -397,9 +494,9 @@ class ViewController: NSViewController {
         
         let apkNonArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-nonarm-release.apk"
         
-        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/3808.apk"
+        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+self.textApkVersionCodeFour.stringValue+".apk"
         
-        let apkNonArmRequiredPath = self.textApkFolderLocation.stringValue+"/3809.apk"
+        let apkNonArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+self.textApkVersionCodeFive.stringValue+".apk"
         
         
         do{
@@ -429,6 +526,60 @@ class ViewController: NSViewController {
         }catch{
             self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nNonArm Apk move failed"))
         }
+    }
+    
+    func buildSingleApk(){
+        self.progress.hidden = false
+        self.progress.startAnimation(self)
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Started"))
+        let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
+        dispatch_async(taskQueue) {
+            
+            let command = runAsync(self.textParentFolderLocation.stringValue+"/gradlew","--build-file",self.textParentFolderLocation.stringValue+"/build.gradle","--settings-file",self.textParentFolderLocation.stringValue+"/settings.gradle","assembleArmRelease")
+            
+            do{
+                try command.finish()
+                self.moveSingleApkToRequiedFolder()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.progress.stopAnimation(self)
+                    self.progress.hidden = true
+                    self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
+                    print("Build Ready")
+                    
+                })
+            }catch {
+                print("Build Failed")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.progress.stopAnimation(self)
+                    self.progress.hidden = true
+                    self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Failed"))
+                })
+            }
+        }
+    }
+    
+    func moveSingleApkToRequiedFolder(){
+        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nMoving Apk to required folder"))
+        let filemanager:NSFileManager = NSFileManager()
+        
+        let apkArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-arm-release.apk"
+        
+        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+self.textApkVersionCodeOne.stringValue+".apk"
+        
+        do{
+            try filemanager.removeItemAtPath(apkArmRequiredPath)
+            print("File deleted")
+        }catch{
+            print("File delete failed")
+        }
+        
+        do{
+            try filemanager.moveItemAtPath(apkArmBuildPath, toPath: apkArmRequiredPath)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nArm Apk moved successfully"))
+        }catch{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nArm Apk move failed"))
+        }
+        
     }
     
 }
