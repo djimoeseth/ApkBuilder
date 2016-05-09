@@ -67,6 +67,8 @@ class ViewController: NSViewController {
     
     var isAllApkRequired = true
     
+    var turn = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.progress.hidden = true
@@ -220,6 +222,7 @@ class ViewController: NSViewController {
     
     
     @IBAction func build(sender: AnyObject) {
+        reset()
         if !isInitialCheckPass(){
             return
         }
@@ -234,6 +237,7 @@ class ViewController: NSViewController {
     
     
     @IBAction func buildWithNewSeed(sender: AnyObject) {
+        reset()
         if !isInitialCheckPass(){
             return
         }
@@ -250,6 +254,10 @@ class ViewController: NSViewController {
                 buildSingleApk()
             }
         }
+    }
+    
+    func reset(){
+        turn = 1
     }
     
     func isInitialCheckPass() -> Bool {
@@ -433,7 +441,16 @@ class ViewController: NSViewController {
     }
     
     func doCodeChangesForAPKBuild(){
-        
+        switch turn {
+        case 1: break
+            //doSomething
+        case 2: break
+            //doSomething
+        case 3: break
+            //doSomething
+        default : break
+            //doSomething
+        }
     }
     
     func createDirForMapping(){
@@ -459,6 +476,7 @@ class ViewController: NSViewController {
         self.progress.hidden = false
         self.progress.startAnimation(self)
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Started"))
+        doCodeChangesForAPKBuild()
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(taskQueue) {
 
@@ -468,11 +486,16 @@ class ViewController: NSViewController {
                 try command.finish()
                 self.moveApkToRequiedFolder()
                  dispatch_async(dispatch_get_main_queue(), {
+                    self.turn = self.turn + 1
                     self.progress.stopAnimation(self)
                     self.progress.hidden = true
-                    self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Ready"))
-                    print("Build Ready")
-
+                    switch (self.turn){
+                    case 2,3:
+                       self.buildApk()
+                    default:
+                        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nAll Build Ready"))
+                        print("All Build Ready")
+                    }
                   })
                 }catch {
                 print("Build Failed")
@@ -490,14 +513,30 @@ class ViewController: NSViewController {
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nMoving Apk to required folder"))
         let filemanager:NSFileManager = NSFileManager()
         
+        var armVersionCode : String?,nonArmVersionCode : String?
+        
+        switch turn {
+        case 1:
+            armVersionCode = self.textApkVersionCodeOne.stringValue
+            nonArmVersionCode = self.textApkVersionCodeTwo.stringValue
+        case 2:
+            armVersionCode = self.textApkVersionCodeThree.stringValue
+            nonArmVersionCode = self.textApkVersionCodeFour.stringValue
+        case 3:
+            armVersionCode = self.textApkVersionCodeFive.stringValue
+            nonArmVersionCode = self.textApkVersionCodeSix.stringValue
+        default:
+            armVersionCode = self.textApkVersionCodeOne.stringValue
+            nonArmVersionCode = self.textApkVersionCodeTwo.stringValue
+        }
+        
         let apkArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-arm-release.apk"
         
         let apkNonArmBuildPath = self.textParentFolderLocation.stringValue+"/app/build/outputs/apk/app-nonarm-release.apk"
         
-        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+self.textApkVersionCodeFour.stringValue+".apk"
+        let apkArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+armVersionCode!+".apk"
         
-        let apkNonArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+self.textApkVersionCodeFive.stringValue+".apk"
-        
+        let apkNonArmRequiredPath = self.textApkFolderLocation.stringValue+"/"+nonArmVersionCode!+".apk"
         
         do{
             try filemanager.removeItemAtPath(apkArmRequiredPath)
