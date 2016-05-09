@@ -443,17 +443,103 @@ class ViewController: NSViewController {
     func doCodeChangesForAPKBuild(){
         switch turn {
         case 1:
-            updateCodeForTurnOne()
+            updateGradleForTurnOne()
+            updateManifestForTurnOne()
         case 2:
-            updateCodeForTurnTwo()
+            updateGradleForTurnTwo()
+            updateManifestForTurnTwo()
         case 3:
-            updateCodeForTurnThree()
+            updateGradleForTurnThree()
+            updateManifestForTurnThree()
         default:
-            updateCodeForTurnTwo()
+            updateGradleForTurnTwo()
+            updateManifestForTurnTwo()
         }
     }
     
-    func updateCodeForTurnOne(){
+    func updateManifestForTurnOne(){
+        let path = self.textParentFolderLocation.stringValue+"/app/src/main/AndroidManifest.xml"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let compatible_screens_seperator =  "<!--COMPATIBLE_SCREENS_COMPONENT-->"
+            let parts = data.componentsSeparatedByString(compatible_screens_seperator)
+            
+            let dataToBeWritten = parts[0] + "\n\t\t" + compatible_screens_seperator +  "\n" + " " + "\n\t\t" + compatible_screens_seperator + "\n" + parts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+        
+    }
+    
+    func updateManifestForTurnTwo(){
+        let path = self.textParentFolderLocation.stringValue+"/app/src/main/AndroidManifest.xml"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let compatible_screens_seperator =  "<!--COMPATIBLE_SCREENS_COMPONENT-->"
+            let parts = data.componentsSeparatedByString(compatible_screens_seperator)
+            
+            
+            let filePath = NSBundle.mainBundle().pathForResource("template_compatible_screens_xhdpi", ofType: "txt")
+            
+            let contentData = NSFileManager.defaultManager().contentsAtPath(filePath!)
+            
+            var result = ""
+            
+            result = (NSString(data: contentData!, encoding: NSUTF8StringEncoding) as? String)!
+            
+            let dataToBeWritten = parts[0] + "\n\t\t" + compatible_screens_seperator +  "\n" + result + "\n\t\t" + compatible_screens_seperator + "\n" + parts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+    }
+    
+    func updateManifestForTurnThree(){
+        let path = self.textParentFolderLocation.stringValue+"/app/src/main/AndroidManifest.xml"
+        
+        do {
+            let data = try NSString(contentsOfFile: path,
+                                    encoding: NSASCIIStringEncoding)
+            let compatible_screens_seperator =  "<!--COMPATIBLE_SCREENS_COMPONENT-->"
+            let parts = data.componentsSeparatedByString(compatible_screens_seperator)
+            
+            
+            let filePath = NSBundle.mainBundle().pathForResource("template_compatible_screens_hdpi", ofType: "txt")
+            
+            let contentData = NSFileManager.defaultManager().contentsAtPath(filePath!)
+            
+            var result = ""
+            
+            result = (NSString(data: contentData!, encoding: NSUTF8StringEncoding) as? String)!
+            
+            let dataToBeWritten = parts[0] + "\n\t\t" + compatible_screens_seperator +  "\n" + result + "\n\t\t" + compatible_screens_seperator + "\n" + parts[2]
+            
+            do{
+                try dataToBeWritten.writeToFile(path, atomically: true,encoding: NSASCIIStringEncoding)
+            }catch{
+                print("Something went wrong!")
+            }
+        }catch{
+            print("Something went wrong!")
+        }
+    }
+    
+    func updateGradleForTurnOne(){
         
        let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
         
@@ -488,7 +574,7 @@ class ViewController: NSViewController {
 
     }
     
-    func updateCodeForTurnTwo(){
+    func updateGradleForTurnTwo(){
         let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
         
         do {
@@ -522,7 +608,7 @@ class ViewController: NSViewController {
         
     }
     
-    func updateCodeForTurnThree(){
+    func updateGradleForTurnThree(){
         let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
         
         do {
@@ -556,7 +642,7 @@ class ViewController: NSViewController {
         
     }
     
-    func updateCodeForSingleApk(){
+    func updateGradleForSingleApk(){
         let path = self.textParentFolderLocation.stringValue+"/app/build.gradle"
         
         do {
@@ -728,7 +814,8 @@ class ViewController: NSViewController {
     func buildSingleApk(){
         self.progress.hidden = false
         self.progress.startAnimation(self)
-        updateCodeForSingleApk()
+        updateGradleForSingleApk()
+        updateManifestForTurnTwo()
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nBuild Started"))
         let taskQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
         dispatch_async(taskQueue) {

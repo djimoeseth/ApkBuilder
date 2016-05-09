@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		157099E91CE126C100F7F6AB /* template_product_flavors.txt in Resources */ = {isa = PBXBuildFile; fileRef = 157099E81CE126C100F7F6AB /* template_product_flavors.txt */; };
+		157099EB1CE1331900F7F6AB /* template_compatible_screens_xhdpi.txt in Resources */ = {isa = PBXBuildFile; fileRef = 157099EA1CE1331900F7F6AB /* template_compatible_screens_xhdpi.txt */; };
+		157099ED1CE1336D00F7F6AB /* template_compatible_screens_hdpi.txt in Resources */ = {isa = PBXBuildFile; fileRef = 157099EC1CE1336D00F7F6AB /* template_compatible_screens_hdpi.txt */; };
 		158749A51CDF83EE000BD087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158749A41CDF83EE000BD087 /* AppDelegate.swift */; };
 		158749A71CDF83EE000BD087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158749A61CDF83EE000BD087 /* ViewController.swift */; };
 		158749A91CDF83EE000BD087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158749A81CDF83EE000BD087 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		157099E81CE126C100F7F6AB /* template_product_flavors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = template_product_flavors.txt; sourceTree = "<group>"; };
+		157099EA1CE1331900F7F6AB /* template_compatible_screens_xhdpi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = template_compatible_screens_xhdpi.txt; sourceTree = "<group>"; };
+		157099EC1CE1336D00F7F6AB /* template_compatible_screens_hdpi.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = template_compatible_screens_hdpi.txt; sourceTree = "<group>"; };
 		158749A11CDF83EE000BD087 /* ApkBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApkBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158749A41CDF83EE000BD087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158749A61CDF83EE000BD087 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				158749A41CDF83EE000BD087 /* AppDelegate.swift */,
 				158749A61CDF83EE000BD087 /* ViewController.swift */,
 				158749A81CDF83EE000BD087 /* Assets.xcassets */,
+				157099EC1CE1336D00F7F6AB /* template_compatible_screens_hdpi.txt */,
+				157099EA1CE1331900F7F6AB /* template_compatible_screens_xhdpi.txt */,
 				157099E81CE126C100F7F6AB /* template_product_flavors.txt */,
 				158749AA1CDF83EE000BD087 /* Main.storyboard */,
 				158749AD1CDF83EE000BD087 /* Info.plist */,
@@ -140,6 +146,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157099EB1CE1331900F7F6AB /* template_compatible_screens_xhdpi.txt in Resources */,
+				157099ED1CE1336D00F7F6AB /* template_compatible_screens_hdpi.txt in Resources */,
 				158749A91CDF83EE000BD087 /* Assets.xcassets in Resources */,
 				157099E91CE126C100F7F6AB /* template_product_flavors.txt in Resources */,
 				158749AC1CDF83EE000BD087 /* Main.storyboard in Resources */,
