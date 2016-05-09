@@ -147,7 +147,9 @@ class ViewController: NSViewController {
         }
         getPermission()
         createDirForMapping()
-        buildApk()
+//        buildApk()
+        replaceSeedJSONFile()
+        replaceSeedJAVAFile()
     }
     
     
@@ -262,12 +264,18 @@ class ViewController: NSViewController {
         let seedJSONFilePathProvided = self.textJavaSeedFileLocation.stringValue
         
         do{
-            try filemanager.copyItemAtPath(seedJSONFilePathProvided, toPath: seedJSONFilePathProject)
-            print("Copy successful")
+            try filemanager.removeItemAtPath(seedJSONFilePathProject)
+            print("File deleted")
         }catch{
-            print("Copy failed")
+            print("File delete failed")
         }
-        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JSON File Replaced"))
+        
+        do{
+            try filemanager.copyItemAtPath(seedJSONFilePathProvided, toPath: seedJSONFilePathProject)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JSON File Replaced"))
+        }catch{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JSON File Replaced Failed"))
+        }
     }
     
     func replaceSeedJAVAFile(){
@@ -279,12 +287,19 @@ class ViewController: NSViewController {
         let seedJavaFilePathProvided = self.textJavaSeedFileLocation.stringValue
         
         do{
-            try filemanager.copyItemAtPath(seedJavaFilePathProvided, toPath: seedJavaFilePathProject)
-            print("Copy successful")
+            try filemanager.removeItemAtPath(seedJavaFilePathProject)
+            print("File deleted")
         }catch{
-            print("Copy failed")
+            print("File delete failed")
         }
-        self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JAVA File Replaced"))
+        
+        do{
+            try filemanager.copyItemAtPath(seedJavaFilePathProvided, toPath: seedJavaFilePathProject)
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JAVA File Replaced"))
+        }catch{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nSeed JAVA File Replaced Failed"))
+        }
+        
     }
     
     func doCodeChangesForAPKBuild(){
