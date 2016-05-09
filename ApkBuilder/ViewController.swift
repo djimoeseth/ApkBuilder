@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Foundation
+
 import SwiftShell
 
 class ViewController: NSViewController {
@@ -139,8 +141,17 @@ class ViewController: NSViewController {
     }
     
     @IBAction func build(sender: AnyObject) {
+        createDirForMapping()
         getPermission()
         buildApk()
+    }
+    
+    func createDirForMapping(){
+        do {
+            try NSFileManager.defaultManager().createDirectoryAtPath(self.textParentFolderLocation.stringValue+"/app/build/outputs/mapping/release", withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription);
+        }
     }
     
     func getPermission(){
@@ -148,9 +159,8 @@ class ViewController: NSViewController {
         run("chmod","+x",self.textParentFolderLocation.stringValue+"/gradlew")
         
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPermission Granted"))
-        
-        
     }
+    
     
     func buildApk() {
         self.progress.hidden = false
