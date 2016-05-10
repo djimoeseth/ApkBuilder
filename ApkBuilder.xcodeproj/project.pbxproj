@@ -14,6 +14,7 @@
 		158749A71CDF83EE000BD087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158749A61CDF83EE000BD087 /* ViewController.swift */; };
 		158749A91CDF83EE000BD087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158749A81CDF83EE000BD087 /* Assets.xcassets */; };
 		158749AC1CDF83EE000BD087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158749AA1CDF83EE000BD087 /* Main.storyboard */; };
+		158826061CE1E30A002B9A57 /* SwiftShell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49E327411CE06A98009AC643 /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49E327421CE06A98009AC643 /* SwiftShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E327411CE06A98009AC643 /* SwiftShell.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				158826061CE1E30A002B9A57 /* SwiftShell.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +276,7 @@
 				);
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -291,6 +294,7 @@
 				);
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
