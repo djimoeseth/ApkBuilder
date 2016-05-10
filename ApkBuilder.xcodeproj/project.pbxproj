@@ -15,17 +15,15 @@
 		158749A91CDF83EE000BD087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158749A81CDF83EE000BD087 /* Assets.xcassets */; };
 		158749AC1CDF83EE000BD087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158749AA1CDF83EE000BD087 /* Main.storyboard */; };
 		49E327421CE06A98009AC643 /* SwiftShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E327411CE06A98009AC643 /* SwiftShell.framework */; };
-		49E327431CE1D47F009AC643 /* SwiftShell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49E327411CE06A98009AC643 /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		15E2D99F1CE058DE005003F0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				49E327431CE1D47F009AC643 /* SwiftShell.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -258,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -276,7 +274,6 @@
 				);
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -294,7 +291,6 @@
 				);
 				INFOPLIST_FILE = ApkBuilder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amitshekhar.ApkBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
