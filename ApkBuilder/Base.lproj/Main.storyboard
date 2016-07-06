@@ -854,7 +854,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5NC-OG-Rum">
-                                <rect key="frame" x="6" y="299" width="123" height="32"/>
+                                <rect key="frame" x="186" y="299" width="123" height="32"/>
                                 <buttonCell key="cell" type="push" title="Build Apk" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ada-12-6S3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -902,7 +902,7 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-Ms-8qW">
-                                <rect key="frame" x="136" y="299" width="194" height="32"/>
+                                <rect key="frame" x="325" y="299" width="194" height="32"/>
                                 <buttonCell key="cell" type="push" title="Build Apk With New Seed" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lhS-91-I2k">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -982,6 +982,16 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pn-E5-O76">
+                                <rect key="frame" x="6" y="299" width="153" height="32"/>
+                                <buttonCell key="cell" type="push" title="Just Replace Seed" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8jb-Bd-Cgf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="justReplaceSeed:" target="XfG-lQ-9wD" id="UXk-42-2du"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>

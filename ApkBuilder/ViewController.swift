@@ -220,6 +220,19 @@ class ViewController: NSViewController {
         textApkVersionCodeSix.hidden = true
     }
     
+    @IBAction func justReplaceSeed(sender: AnyObject) {
+        if textParentFolderLocation.stringValue.isEmpty{
+            self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPlease provide parent directory path of project"))
+            return
+        }
+        getPermission()
+        if isValidForNewSeed(){
+            deleteOldResources()
+            replaceSeedJSONFile()
+            replaceSeedJAVAFile()
+            addNewResources()
+        }
+    }
     
     @IBAction func build(sender: AnyObject) {
         reset()
@@ -714,7 +727,6 @@ class ViewController: NSViewController {
         
         self.textTerminal.documentView?.textStorage??.appendAttributedString(NSAttributedString(string: "\nPermission Granted"))
     }
-    
     
     func buildApk() {
         self.progress.hidden = false
