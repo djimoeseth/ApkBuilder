@@ -412,7 +412,7 @@ class ViewController: NSViewController {
         
         let seedJSONFilePathProject = self.textParentFolderLocation.stringValue+"/app/src/main/res/raw/seed.json"
         
-        let seedJSONFilePathProvided = self.textJavaSeedFileLocation.stringValue
+        let seedJSONFilePathProvided = self.textJsonSeedFileLocation.stringValue
         
         do{
             try filemanager.removeItemAtPath(seedJSONFilePathProject)
